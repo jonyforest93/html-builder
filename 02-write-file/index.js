@@ -26,11 +26,12 @@ writeStream.on('finish', () => {
 });
 
 stdin.on('data', (data) => {
-  const input = data.toString();
+  const input = data.toString().trim();
   if (input.trim().toLowerCase() === 'exit') {
     writeStream.end();
   } else if (!writeStream.writableEnded) {
-    writeStream.write(input, 'utf-8');
+    const modifiedInput = input.replace(/\n/g, '');
+    writeStream.write(modifiedInput, 'utf-8');
   }
 });
 
