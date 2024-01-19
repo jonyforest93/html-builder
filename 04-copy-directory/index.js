@@ -35,7 +35,7 @@ async function copyFiles(filesPath, copyFilesPath) {
   }
 }
 
-async function run() {
+async function makeCopy() {
   try {
     await fs.rm(copyFilesPath, { recursive: true, force: true });
     await fs.mkdir(copyFilesPath);
@@ -45,4 +45,4 @@ async function run() {
   }
 }
 
-run();
+makeCopy();
